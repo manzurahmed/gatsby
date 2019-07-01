@@ -39,6 +39,51 @@ In this episode, a new folder, named, "components" is created. I created a new f
 
 # 5. Creating Gatsby Page Layouts
 
+In the previous lessons, I created Header.js and Footer.js files and I put them in my About.js, Blog.js, and Contact.js files. What if I had 20 files? I needed to open every files and write codes for header and footer.
+
+To ease this embarassment, I created a ReactJS Page Layout.
+```
+import React from 'react';
+
+import Header from './Header';
+import Footer from './Footer';
+
+const Layout = (props) => {
+	return (
+		<div>
+			<Header />
+			{props.children}
+			<Footer />
+		</div>
+	)
+}
+
+export default Layout;
+```
+
+So, I open my index, about, blog and contact files (and, my subsequent files),  and modified them to use my Layout files.
+Now, my index.js files takes the following lines of code:
+
+```
+import React from "react";
+import { Link} from 'gatsby';
+
+import Layout from '../components/Layout';
+
+const IndexPage = () => {
+
+	return (
+		<Layout>
+			<h1>Hello</h1>
+			<h2>I'm Manzur, a full-stack developer living in polluted Dhaka.</h2>
+			<p>Need a developer? <Link to="/contact">Contact me.</Link></p>
+		</Layout>
+	)
+};
+
+export default IndexPage;
+```
+
 # 6. Styling Gatsby Projects
 
 # 7. Styling Gatsby with CSS Modules
