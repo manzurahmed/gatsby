@@ -37,7 +37,7 @@ import { Link} from 'gatsby';
 
 In this episode, a new folder, named, "components" is created. I created a new file, "Footer.js" in it. This React component will be used at the bottom of every Gatsby pages. That is why is "Shared Components".
 
-# 5. Creating Gatsby Page Layouts
+# 5. Creating Gatsby Page Layouts (48:14)
 
 In the previous lessons, I created Header.js and Footer.js files and I put them in my About.js, Blog.js, and Contact.js files. What if I had 20 files? I needed to open every files and write codes for header and footer.
 
@@ -84,32 +84,32 @@ const IndexPage = () => {
 export default IndexPage;
 ```
 
-# 6. Styling Gatsby Projects
+# 6. Styling Gatsby Projects (56:13)
 
-# 7. Styling Gatsby with CSS Modules
+# 7. Styling Gatsby with CSS Modules (1:06:49)
 
-# 8. Gatsby Data with GraphQL
+# 8. Gatsby Data with GraphQL (1:28:23)
 
-# 9. GraphQL Playground
+# 9. GraphQL Playground (1:47:12)
 
-# 10. Sourcing Content from the File System
+# 10. Sourcing Content from the File System (1:51:32)
 
-# 11. Working with Markdown Posts
+# 11. Working with Markdown Posts (2:03:37)
 
-# 12. Generating Slugs for Posts
+# 12. Generating Slugs for Posts (2:19:00)
 
-# 13. Dynamically Generating Pages
+# 13. Dynamically Generating Pages (2:35:14)
 
-# 14. Rendering Post Data in Blog Template
+# 14. Rendering Post Data in Blog Template (2:52:08)
 
-# 15. Adding Images to Posts
+# 15. Adding Images to Posts (3:03:28)
 
-# 16. Getting Started with Contentful
+# 16. Getting Started with Contentful (3:21:19)
 
-# 17. Rendering Contentful Posts
+# 17. Rendering Contentful Posts (3:38:29)
 
-# 18. Dynamic Pages from Contentful
+# 18. Dynamic Pages from Contentful (3:49:24)
 
-# 19. 404 Pages and React Helmet
+# 19. 404 Pages and React Helmet (4:10:18)
 
-# 20. Deploying Your Gatsby Site
+# 20. Deploying Your Gatsby Site (4:25:38)
