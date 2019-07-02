@@ -86,6 +86,29 @@ export default IndexPage;
 
 # 6. Styling Gatsby Projects (56:13)
 
+In this episode, a new Gatsby plugin is installed "gatsby-plugin-sass".
+
+```
+npm install --save node-sass gatsby-plugin-sass
+```
+
+Create a file in the root folder of my project called "gatsby-config.js" (if not present) and put the following contest in it.
+
+```
+module.exports = {
+  plugins: [
+  	'gatsby-plugin-sass'
+  ]
+}
+```
+
+Now, run the Gatsby development server again from cli:
+
+```
+npm run develop
+```
+
+
 # 7. Styling Gatsby with CSS Modules (1:06:49)
 
 # 8. Gatsby Data with GraphQL (1:28:23)
