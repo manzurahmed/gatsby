@@ -131,6 +131,11 @@ in **Header.module.scss** CSS Module, in the calling **Header.js** file, it is w
 
 # 8. Gatsby Data with GraphQL (1:28:23)
 
+When Gatsby is install via NPM, **GraphiQL** is installed. It is a GraphQL data query tools that runs in the browser.
+To access it, type "http://localhost:8000/___graphql".
+
+
+
 # 9. GraphQL Playground (1:47:12)
 
 # 10. Sourcing Content from the File System (1:51:32)
