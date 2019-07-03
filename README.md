@@ -131,10 +131,48 @@ in **Header.module.scss** CSS Module, in the calling **Header.js** file, it is w
 
 # 8. Gatsby Data with GraphQL (1:28:23)
 
-When Gatsby is install via NPM, **GraphiQL** is installed. It is a GraphQL data query tools that runs in the browser.
+When Gatsby is install via NPM, **GraphiQL** is installed. It is a in-browser IDE for exploring a GraphQL API.
 To access it, type "http://localhost:8000/___graphql".
 
+In this session, I wrote the following files in **gatsby-config.js**:
 
+```
+module.exports = {
+	siteMetadata: {
+		title: 'Full-stack Bootcamp',
+		author: 'Andrew Mead'
+	},
+	plugins: [
+		'gatsby-plugin-sass'
+	]
+}
+```
+
+To use Grapql in Header.js file, I opened it and import **graphql** and **useStaticQuery** named exports from 'gatsby' library. After that I fetched **title** from siteMetadata object in gatsby-config.js file.
+
+```
+import HeaderStyles from './Header.module.scss';
+```
+
+Fetched data,
+```
+const data = useStaticQuery(
+	graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+				}
+			}
+		}
+	`
+);
+```
+
+and, use the data where required,
+```
+{ data.site.siteMetadata.title }
+```
 
 # 9. GraphQL Playground (1:47:12)
 
