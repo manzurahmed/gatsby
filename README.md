@@ -111,6 +111,24 @@ npm run develop
 
 # 7. Styling Gatsby with CSS Modules (1:06:49)
 
+"CSS Module" is a ReactJS thing.
+
+This project supports CSS Modules alongside regular stylesheets using the [name].module.css file naming convention. CSS Modules allows the scoping of CSS by automatically creating a unique classname of the format [filename]\_[classname]\_\_[hash].
+
+CSS Modules let you use the same CSS class name in different files without worrying about naming clashes. Learn more about CSS Modules here.
+
+For more information, visit https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet.
+
+If there is CSS class like,
+```
+.nav-list {
+}
+```
+in **Header.module.scss** CSS Module, in the calling **Header.js** file, it is written as,
+```
+<ul className={HeaderStyles.navList}>
+```
+
 # 8. Gatsby Data with GraphQL (1:28:23)
 
 # 9. GraphQL Playground (1:47:12)
