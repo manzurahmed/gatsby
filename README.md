@@ -176,6 +176,16 @@ and, use the data where required,
 
 # 9. GraphQL Playground (1:47:12)
 
+There is alternate way to query data from GraphQL, which is "GraphQL Playground IDE". To use it, I need to prepare proper environment. In order to do that, I created a file, named, **.env.development** for my PC to set environment variable to make it cross-OS compatible. In the file, I wrote the following line
+
+```
+GATSBY_GRAPHQL_IDE=playground
+```
+To take advantage of GraphQL Playground IDE, I also installed a NPM package called, "env-cmd".
+```
+npm i --save-dev env-cmd
+```
+
 # 10. Sourcing Content from the File System (1:51:32)
 
 # 11. Working with Markdown Posts (2:03:37)
