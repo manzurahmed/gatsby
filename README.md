@@ -186,24 +186,22 @@ To take advantage of GraphQL Playground IDE, I also installed a NPM package call
 npm i --save-dev env-cmd
 ```
 
-# 10. Sourcing Content from the File System (1:51:32)
+Now, I opened package.json file and in the "scripts" section I modified the following line to made GraphQL Playground run properly on http://localhost:8000/___graphql,
+```
+"develop": "env-cmd -f .env.development gatsby develop",
+```
 
-# 11. Working with Markdown Posts (2:03:37)
-
-# 12. Generating Slugs for Posts (2:19:00)
-
-# 13. Dynamically Generating Pages (2:35:14)
-
-# 14. Rendering Post Data in Blog Template (2:52:08)
-
-# 15. Adding Images to Posts (3:03:28)
-
-# 16. Getting Started with Contentful (3:21:19)
-
-# 17. Rendering Contentful Posts (3:38:29)
-
-# 18. Dynamic Pages from Contentful (3:49:24)
-
-# 19. 404 Pages and React Helmet (4:10:18)
-
-# 20. Deploying Your Gatsby Site (4:25:38)
+Now, from terminal I stated gatsby server by running the following command:
+```
+npm run develop
+```
+I then run GraphQL Playfound and run the following query and be confirmed that it's running properly:
+```
+query {
+  site {
+    siteMetadata {
+      author
+    }
+  }
+}
+```
