@@ -42,6 +42,56 @@ In the next section, I shall read the file and fetch the post details from .md f
 
 # 11. Working with Markdown Posts (2:03:37)
 
+In this section, I shall install another Gatsby plugin to pull out title, date, body from the mark down file convert them to usable HTML form.
+
+```
+npm install --save gatsby-transformer-remark
+```
+This Gatsby Plugin is a standalone markdown file parser.
+
+I now head over to GraphQL Playground and refresh the page. I should find two new entries in the DOCS section, "markdownRemark" and "allMarkdownRemark".
+
+Let's write a new query in GraphQL Playground,
+
+```
+query {
+	allMarkdownRemark {
+		edges {
+			node {
+				frontmatter {
+					title
+					date
+				}
+				html
+				excerpt
+			}
+		}
+	}
+}
+```
+
+Next, in the blog.js file, I import graphql and useStaticQuery to run a query.
+```
+import { graphql, useStaticQuery } from 'gatsby';
+```
+
+```
+const data = useStaticQuery(graphql`
+	query {
+		allMarkdownRemark {
+			edges {
+				node {
+					frontmatter {
+						title
+						date
+					}
+				}
+			}
+		}
+	}
+`);
+```
+
 # 12. Generating Slugs for Posts (2:19:00)
 
 # 13. Dynamically Generating Pages (2:35:14)
