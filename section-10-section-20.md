@@ -183,6 +183,43 @@ module.exports.createPages = async ({ graphql, actions }) => {
 }
 ```
 
+And in my /src/pages/blog.js file I modified the GraphQL query and used the data field to make link to each blog pages.
+```
+const data = useStaticQuery(graphql`
+		query {
+			allMarkdownRemark {
+				edges {
+					node {
+						frontmatter {
+							title
+							date
+						}
+						fields {
+							slug
+						}
+					}
+				}
+			}
+		}
+	`);
+```
+```
+<ol>
+{
+	data.allMarkdownRemark.edges.map((edge, index) => {
+		return (
+			<li key={index}>
+				<Link to={`/blog/${edge.node.fields.slug}`}>
+					<h2>{edge.node.frontmatter.title}</h2>
+					<p>{edge.node.frontmatter.date}</p>
+				</Link>
+			</li>
+		)
+	})
+}
+</ol>
+```
+
 # 14. Rendering Post Data in Blog Template (2:52:08)
 
 # 15. Adding Images to Posts (3:03:28)
