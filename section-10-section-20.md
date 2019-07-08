@@ -113,6 +113,8 @@ Now, I stopped the dev server from Terminal and rerun. At the time of traspiling
 
 I am going to use **fileAbsolutePath** to extract "slag" for each of my blog posts.
 
+![File Absolute Path](https://github.com/manzurahmed/gatsby/blob/master/fileAbsolutePath.jpg)
+
 Restart development server. If everything goes right, I should see the **fields** field in GraphQL Playground. I used the following query:
 
 ```
