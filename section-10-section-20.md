@@ -94,6 +94,47 @@ const data = useStaticQuery(graphql`
 
 # 12. Generating Slugs for Posts (2:19:00)
 
+In this section, I am going to create dynamic URL for each blog post and a template for showing blog content.
+
+I created a new file, "gatsby-node.js" in the root of my project. The content of the file:
+
+```
+module.exports.onCreateNode = ( {node, actions} ) => {
+	const { creatNodeField } = actions;
+
+	if(node.internal.type === 'MarkdownRemark') {
+		console.log(JSON.stringify(node, undefined, 4));
+	}
+}
+```
+
+Now, I stopped the dev server from Terminal and rerun. At the time of traspiling my project, I see something like the picture below.
+
+
+I am going to use **fileAbsolutePath** to extract "slag" for each of my blog posts.
+
+Restart development server. If everything goes right, I should see the **fields** field in GraphQL Playground. I used the following query:
+
+```
+query {
+	allMarkdownRemark {
+		edges {
+			node {
+				frontmatter {
+					title
+					date
+				}
+				html
+				excerpt
+        fields {
+          slug
+        }
+			}
+		}
+	}
+}
+```
+
 # 13. Dynamically Generating Pages (2:35:14)
 
 # 14. Rendering Post Data in Blog Template (2:52:08)
