@@ -111,7 +111,7 @@ module.exports.onCreateNode = ( {node, actions} ) => {
 Now, I stopped the dev server from Terminal and rerun. At the time of traspiling my project, I see something like the picture below.
 
 
-I am going to use **fileAbsolutePath** to extract "slag" for each of my blog posts.
+I am going to use **fileAbsolutePath** to extract "slug" for each of my blog posts.
 
 ![File Absolute Path](https://github.com/manzurahmed/gatsby/blob/master/fileAbsolutePath.jpg)
 
