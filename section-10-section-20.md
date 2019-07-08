@@ -137,6 +137,50 @@ query {
 
 # 13. Dynamically Generating Pages (2:35:14)
 
+In this section, I created a folder, called **templates** in the "src" folder and created a file **blog.js"".
+
+To create a new page for each Blog post, I require another Gatsby API call, **createPages" in "gatsby-node.js" file.
+
+```
+
+module.exports.createPages = async ({ graphql, actions }) => {
+
+	// 1. Get path to template
+	// 2. Get markdown data
+	// 3. Create new pages
+
+	const { createPage } = actions;
+	const blogTemplate = path.resolve('./src/templates/blog.js');
+
+	// graphql returs Promise
+	const res = await graphql(`
+		query {
+			allMarkdownRemark {
+				edges {
+					node {
+						fields {
+				          slug
+				        }
+					}
+				}
+			}
+		}
+	`);
+
+	res.data.allMarkdownRemark.edges.forEach(
+		(edge) => {
+			createPage({
+				component: blogTemplate,
+				path: `/blog/${edge.node.fields.slug}`,
+				context:  {
+					slug: edge.node.fields.slug
+				}
+			})
+		}
+	);
+}
+```
+
 # 14. Rendering Post Data in Blog Template (2:52:08)
 
 # 15. Adding Images to Posts (3:03:28)
