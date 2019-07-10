@@ -258,6 +258,19 @@ export default Blog;
 
 # 15. Adding Images to Posts (3:03:28)
 
+In this section, I shall put an Image in a blog detail page. I downloaded a free photo from the Internet and paste it in the "src/posts" folder. So, I opened the "src/posts/gatsby.md" file and wrote the markdown for the image file like below,
+
+```
+![Grass](./grass.jpg)
+```
+
+Gatsby is not aware of the image although I have written the image markdown in the file. Now, let me instruct Gatsby about the image in the blog post file. To show image, I need to install 3 new Gatsby Plugin.
+
+```
+npm install gatsby-plugin-sharp gatsby-remark-images gatsby-remark-relative-images
+```
+
+
 # 16. Getting Started with Contentful (3:21:19)
 
 # 17. Rendering Contentful Posts (3:38:29)
