@@ -222,6 +222,40 @@ const data = useStaticQuery(graphql`
 
 # 14. Rendering Post Data in Blog Template (2:52:08)
 
+In the "templates/blogjs" file in placed the following in it,
+```
+import React from 'react'
+import { graphql } from 'gatsby'
+import Layout from '../components/Layout'
+
+export const query = graphql`
+	query($slug: String!) {
+		markdownRemark(fields: { slug: { eq: $slug } }) {
+			frontmatter {
+				title
+				date
+			}
+			html
+		}
+	}
+`;
+
+const Blog = (props) => {
+
+	console.log(props);
+
+	return (
+		<Layout>
+			<h1>{props.data.markdownRemark.frontmatter.title}</h1>
+			<p>{props.data.markdownRemark.frontmatter.date}</p>
+			<div dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}></div>
+		</Layout>
+	)
+}
+
+export default Blog;
+```
+
 # 15. Adding Images to Posts (3:03:28)
 
 # 16. Getting Started with Contentful (3:21:19)
