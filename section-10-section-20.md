@@ -270,6 +270,9 @@ Gatsby is not aware of the image although I have written the image markdown in t
 npm install gatsby-plugin-sharp gatsby-remark-images gatsby-remark-relative-images
 ```
 
+I have only post in "src/posts" folder. What if I have 500 posts. It will look like a mess. To organize posts and assets I created a folder for each folder.
+
+To stylize my post detailed page, I created a Footer styling module, named, **Footer.module.scss" 
 
 # 16. Getting Started with Contentful (3:21:19)
 
