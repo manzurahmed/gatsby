@@ -326,6 +326,74 @@ query {
 
 # 17. Rendering Contentful Posts (3:38:29)
 
+
+In this section of the video, I learnt how to sort posts and format the published date of the post. In the GraphQL Playground, my query looks like below,
+
+```
+query {
+  allContentfulBlogPost (
+    sort: {
+      fields: publishedDate,
+      order: DESC
+    }
+  ) {
+    edges {
+      node {
+        title
+        slug
+        publishedDate(formatString: "MMMM Do, YYYY")
+      }
+    }
+  }
+}
+```
+
+Now, I opened my "src/pages/blog.js" file and replaced my query I used before.
+
+```
+const data = useStaticQuery(graphql`
+		query {
+		  allContentfulBlogPost ( sort: { fields: publishedDate, order: DESC } ) {
+		    edges {
+		      node {
+		        title
+		        slug
+		        publishedDate(formatString: "MMMM Do, YYYY")
+		      }
+		    }
+		  }
+		}
+	`);
+```
+
+In the render section of my Component I modified the fields in it,
+
+```
+return (
+		<div>
+			<Layout>
+				<h1>Blog</h1>
+				<ol className={blogStyles.posts}>
+					{
+						data.allContentfulBlogPost.edges.map((edge, index) => {
+							return (
+								<li key={index} className={blogStyles.post}>
+									<Link to={`/blog/${edge.node.slug}`}>
+										<h2>{edge.node.title}</h2>
+										<p>{edge.node.publishedDate}</p>
+									</Link>
+								</li>
+							)
+						})
+					}
+				</ol>
+			</Layout>
+		</div>
+	)
+```
+
+In the next section, I shall fetch content data from the Contentful CMS for each post.
+
 # 18. Dynamic Pages from Contentful (3:49:24)
 
 # 19. 404 Pages and React Helmet (4:10:18)
