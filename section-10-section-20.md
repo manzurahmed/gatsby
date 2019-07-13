@@ -276,6 +276,54 @@ To stylize my post detailed page, I created a Footer styling module, named, **Fo
 
 # 16. Getting Started with Contentful (3:21:19)
 
+In this section of Gatsby bootcamp, I shall connect Gatsby with a Content Management System (CMS) named, "ContentFull CMS". I visited https://www.contentful.com website, created my free account and published 2 blog posts.
+
+In order to access the blog posts in Contentful CMS via the GraphQL API, I shall now install a Gatsby plugin again. Its name is **gatsby-source-contentful**. I install it via NPM,
+
+```
+npm install --save gatsby-source-contentful
+```
+
+After plugin installation, I open **.env.development** and **gatsby-config.js** files.
+
+I .env.development files I put "Space ID" and "Access Token" in it. I got it from Contentful CMS settings. The codes are like below,
+
+```
+CONTENTFUL_SPACE_ID=njxtbp61v219
+CONTENTFUL_ACCESS_TOKEN=bnVtfz59rhwo8do-xTg-AEJdugFFUSv__Zavdri41qU
+```
+
+In the "gatsby-config.js" file, the configuration of the new plugin was,
+
+```
+{
+	resolve: 'gatsby-source-contentful',
+	options: {
+		spaceId: '',
+		accessToken: '',
+	}
+},
+```
+
+Now, I opened GraphQL and clicked the DOCS link on the right side of the UI. Here I found some new entries for Contentful CMS, like, contentfulContentType, allContentfulContentType, contentfulBlogPost, allContentfulBlogPost, contentfulBlogPostBodyRichTextNode and allContentfulBlogBodyRichTextNode. I shall use **allContentfulBlogPost** entry to fetch remote data from Contentful CMS.
+
+Here is my GraphQL query looks like,
+
+```
+query {
+  allContentfulBlogPost {
+    edges {
+      node {
+        title
+        slug
+        publishedDate
+      }
+    }
+  }
+}
+```
+
+
 # 17. Rendering Contentful Posts (3:38:29)
 
 # 18. Dynamic Pages from Contentful (3:49:24)
