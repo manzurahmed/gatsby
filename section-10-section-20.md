@@ -518,4 +518,45 @@ export default Blog;
 
 # 19. 404 Pages and React Helmet (4:10:18)
 
+In this sectio, mentor shows us how to setup a 404 page and to customize the head of a document to setup page title. 
+
+In **pages** folder, I created a file **404.js** file. I am also going to install Gatsby plugin **gatsby-plugin-react-helmet** and React library called **React Helmet** to setup head of our document.
+
+Let us install the two packages,
+
+```
+npm i gatsby-plugin-react-helmet react-helmet
+```
+
+After installation, I change the gatsby-config.js file to include the libraries into plugins section.
+
+```
+plugins: [
+	'gatsby-plugin-react-helmet',
+	...
+	...
+	...
+]
+```
+
+The content of 404.js files is given below.
+
+```
+import React from 'react';
+import { Link } from 'gatsby';
+
+import Layout from '../components/layout';
+
+const NotFound = () => {
+	return (
+		<Layout>
+			<h1>Page not found</h1>
+			<p><Link to="/">Head home</Link></p>
+		</Layout>
+	);
+}
+
+export default NotFound;
+```
+
 # 20. Deploying Your Gatsby Site (4:25:38)
