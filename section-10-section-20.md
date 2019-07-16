@@ -559,4 +559,49 @@ const NotFound = () => {
 export default NotFound;
 ```
 
+To take advantage of React Helmet, I shall create new component file, called, **Head.js". I am going to load it in **templates/blog.js" file so that each of your single blog page get "Title" tag in the page head.
+
+Content of "Head.js",
+
+```
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
+import { useStaticQuery, graphql } from 'gatsby'
+
+const Head = ({ title }) => {
+
+	const data = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+				}
+			}
+		}
+	`);
+
+	return (
+		<Helmet title={`${title} | ${data.site.siteMetadata.title}`} />
+	)
+}
+
+export default Head;
+```
+
+In each of my files in "pages" and "templates" file I set up a reference to Head.js by importing it and called <Head /> components along with necessary data in **title"" props.
+
+Importing Component
+
+```
+import Head from '../components/Head'
+```
+
+Setting up Head,
+
+```
+<Head title="Contact" />
+```
+
+
 # 20. Deploying Your Gatsby Site (4:25:38)
