@@ -326,7 +326,6 @@ query {
 
 # 17. Rendering Contentful Posts (3:38:29)
 
-
 In this section of the video, I learnt how to sort posts and format the published date of the post. In the GraphQL Playground, my query looks like below,
 
 ```
@@ -395,6 +394,127 @@ return (
 In the next section, I shall fetch content data from the Contentful CMS for each post.
 
 # 18. Dynamic Pages from Contentful (3:49:24)
+
+In this section of the Gatsby Bootcamp, I opened the **gatsby-node.js** file and modified the **module.exports.createPages** section to take data from **allContentfulBlogPost** data. The **createPages** module now takes the following codes:
+
+```
+module.exports.createPages = async ({ graphql, actions }) => {
+
+	// 1. Get path to template
+	// 2. Get markdown data
+	// 3. Create new pages
+
+	const { createPage } = actions;
+	const blogTemplate = path.resolve('./src/templates/blog.js');
+
+	// graphql returs Promise
+	const res = await graphql(`
+		query {
+			allContentfulBlogPost {
+				edges {
+					node {
+						slug
+					}
+				}
+			}
+		}
+	`);
+
+	res.data.allContentfulBlogPost.edges.forEach(
+		(edge) => {
+			createPage({
+				component: blogTemplate,
+				path: `/blog/${edge.node.slug}`,
+				context: {
+					slug: edge.node.slug
+				}
+			})
+		}
+	);
+}
+```
+
+Now, I next move to **blog.js** file in "templates" folder. Here I wrote a new query to fetch data from GraphQL and show them using <Layout> component. GraphQL returns the content of the body in complex JSON folder.
+
+To parse the content I am going to install a new **Gatsby Plugin** again.
+
+```
+npm install @contentful/rich-text-react-renderer
+```
+
+After installation completion, I import **documentToReactComponent** in blog.js and make some changes in the <Layout> section. The code of section is given at the end of this section.
+
+Later, I opened up Contentful CMS and inserted a heading paragraph, a new image and another paragraph with bold-styled text.
+
+To fetch that content I changed the GraphQL query like below,
+
+```
+query {
+  allContentfulBlogPost (
+    sort: {
+      fields: publishedDate,
+      order: DESC
+    }
+  ) {
+    edges {
+      node {
+        title
+        slug
+        publishedDate(formatString: "MMMM Do, YYYY")
+        body {
+          json
+        }
+      }
+    }
+  }
+}
+```
+
+Code of blog.js,
+
+```
+import React from 'react'
+import { graphql } from 'gatsby'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Layout from '../components/Layout'
+
+export const query = graphql`
+	query($slug: String) {
+		contentfulBlogPost(slug: {eq: $slug}) {
+			title
+			publishedDate(formatString: "MMMM Do, YYYY")
+			body {
+				json
+			}
+		}
+	}
+`;
+
+const Blog = (props) => {
+
+	const options = {
+		renderNode: {
+			"embedded-asset-block": (node) => {
+				const alt = node.data.target.fields.title['en-US'];
+				const url = node.data.target.fields.file['en-US'].url;
+				return <img alt={alt} src={url} />
+			}
+		}
+	}
+
+	console.log(props);
+
+	return (
+		<Layout>
+			<h1>{props.data.contentfulBlogPost.title}</h1>
+			<p>{props.data.contentfulBlogPost.publishedDate}</p>
+			{documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
+		</Layout>
+	)
+}
+
+export default Blog;
+```
 
 # 19. 404 Pages and React Helmet (4:10:18)
 
